@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Home Assestment",
   "scripts": {
-    "start": "http-server ./dist",
+    "start": "npm run build && http-server ./dist",
     "test": "nyc --reporter=text mocha \"./src/**/*.spec.js\"",
     "build": "webpack --config webpack.config.js"
   },
