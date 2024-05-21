@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Home Assestment",
   "scripts": {
-    "start": "node ./src/index.js",
-    "test": "nyc --reporter=text mocha --exclude **/*.spec.js ./src",
+    "start": "http-server ./dist",
+    "test": "nyc --reporter=text mocha \"./src/**/*.spec.js\"",
     "build": "webpack --config webpack.config.js"
   },
   "author": "Ramiro Gonzalez",
@@ -16,5 +16,8 @@
     "nyc": "^15.1.0",
     "webpack": "^5.91.0",
     "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
   }
 }

@@ -1,7 +1,7 @@
-const GameService = require('./modules/services/game').GameService;
+const BlackJack = require('./modules/blackjack').BlackJack;
 
-const game = new GameService();
+const blackJack = new BlackJack();
 
-document.getElementById('startGame').addEventListener('click', game.start);
-document.getElementById('hit').addEventListener('click', game.hit);
-document.getElementById('stand').addEventListener('click', game.stand);
+document.getElementById('startGame').addEventListener('click', blackJack.start);
+document.getElementById('hit').addEventListener('click', blackJack.hit);
+document.getElementById('stand').addEventListener('click', blackJack.stand);
