@@ -1,4 +1,20 @@
-## BlackJack Game
+## Freestar Home Assestment
 
-la idea es hacer un build con webpack supongo y generar un index.html
-y que se pueda servir con un mini servidor http
+The solution provides the necessry code for the Blackjack Card Game Challenge.
+Actally the solution is using vanilla javascript
+
+- **Mocha**: `Testing Framework`
+- **Chai**: `Test Assert Tool`
+- **JsDOM**: `Javascript Dom Render`
+- **Npm**: `Javascript Package Manager`
+- **Webpack**: `Javascript Bundler`
+
+## Commands
+* **installation:** `npm run install`
+* **start:** `npm run start` *start application in port 8080 with http-server*
+* **test:** `npm run test` *unit tests*
+* **build:** `npm run build` *generates build package*
+
+## Scaffolding
+* src (folder) `source code`
+* * modules (folder) `main app modules`
