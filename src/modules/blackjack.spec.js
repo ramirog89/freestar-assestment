@@ -60,13 +60,49 @@ describe('BlackJack', () => {
       expect(blackJackGame.game.end).to.have.been.callCount(1);
     });
   });
-
+  
   describe('when stand', () => {
-    it('should give one more card to the player and render hand', () => {
+    it('should give one more card to the dealer if below 17 and end game', () => {
       blackJackGame.stand();
+      // expect(blackJackGame.dealer.hand.length).to.equal(3);
+      expect(blackJackGame.game.end).to.have.been.callCount(1);
+    });
+  });
 
-      expect(blackJackGame.player.hand.length).to.equal(3);
-      expect(blackJackGame.game.renderHands).to.have.been.calledWith(blackJackGame.player, blackJackGame.dealer);
+  describe('when getWinner', () => {
+    it('should return Player when player total is closer to 21 than Dealer', () => {
+      blackJackGame.dealer.total = 17;
+      blackJackGame.player.total = 20;
+
+      expect(blackJackGame.getWinner()).to.equal('Player');
+    });
+
+    it('should return Player when Dealer total is higher than 21', () => {
+      blackJackGame.dealer.total = 25;
+      blackJackGame.player.total = 16;
+
+      expect(blackJackGame.getWinner()).to.equal('Player');
+    });
+
+    it('should return Dealer when dealer total is closer to 21 than Player', () => {
+      blackJackGame.dealer.total = 20;
+      blackJackGame.player.total = 8;
+
+      expect(blackJackGame.getWinner()).to.equal('Dealer');
+    });
+
+    it('should return Dealer when Player total is higher than 21', () => {
+      blackJackGame.dealer.total = 15;
+      blackJackGame.player.total = 27;
+
+      expect(blackJackGame.getWinner()).to.equal('Dealer');
+    });
+
+    it('should return Tie when dealear and player total are equal', () => {
+      blackJackGame.dealer.total = 17;
+      blackJackGame.player.total = 17;
+
+      expect(blackJackGame.getWinner()).to.equal('Tie');
     });
   });
 

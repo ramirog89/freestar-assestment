@@ -33,16 +33,16 @@ class BlackJack {
 
   getWinner = () => {
     if (this.player.total > 21) {
-      return this.player.name;
+      return this.dealer.name;
     } else if (this.dealer.total > 21) {
       return this.player.name;
     } else if (this.player.total > this.dealer.total) {
       return this.player.name;
     } else if (this.dealer.total > this.player.total) {
       return this.dealer.name;
-    } else {
-      return 'Tie';
     }
+
+    return 'Tie';
   }
 }
 
