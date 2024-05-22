@@ -1,14 +1,13 @@
-const { Deck } = require('./deck');
-const { Player } = require('./player');
-const { Game } = require('./game');
+class BlackJackService {
 
-class BlackJack {
-  game   = new Game();
-  deck   = new Deck();
-  player = new Player('Player');
-  dealer = new Player('Dealer');
-
-  constructor() {
+  constructor(game, deck, player, dealer) {
+    this.game = game;
+    this.deck = deck;
+    this.player = player;
+    this.dealer = dealer;
+  }
+  
+  bind = () => {
     this.game.setup(this.start, this.hit, this.stand);
   }
 
@@ -50,4 +49,4 @@ class BlackJack {
   }
 }
 
-module.exports = { BlackJack };
+module.exports = { BlackJackService };

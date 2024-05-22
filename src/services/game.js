@@ -1,4 +1,4 @@
-class Game {
+class GameService {
 
   setup = (startHandler, hitHandler, standHandler) => {
     document.getElementById('play').addEventListener('click', startHandler);
@@ -38,4 +38,4 @@ class Game {
 
 }
 
-module.exports = { Game };
+module.exports = { GameService };

@@ -1,9 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   background-color: rgb(32, 120, 49);
 }
 
 .title {
   text-align: center;
+  margin: 0.67em 0;
 }
 
 .game {

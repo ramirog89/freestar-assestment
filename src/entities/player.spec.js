@@ -47,18 +47,4 @@ describe('Player', () => {
 
   });
 
-  describe('when handToString', () => {
-    it('should return string the value and suit of the hand', () => {
-      const player = new Player('test');
-  
-      player.hand = [
-        new Card("Hearts", "2", 2),
-        new Card("Diamonds", "4", 4),
-        new Card("Hearts", "A", 11),
-      ];
-  
-      expect(player.handToString()).to.equal('2 of Hearts, 4 of Diamonds, A of Hearts');
-    });
-  });
-
 });

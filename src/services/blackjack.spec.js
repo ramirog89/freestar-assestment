@@ -3,17 +3,24 @@ const sinonChai = require('sinon-chai');
 const sinon = require('sinon');
 
 const { expect } = chai;
-const { Deck } = require('./deck');
-const { Card } = require('./card');
-const { BlackJack } = require('./blackjack');
+const { Deck } = require('../entities/deck');
+const { Card } = require('../entities/card');
+const { Player } = require('../entities/player');
+const { GameService } = require('./game');
+const { BlackJackService } = require('./blackjack');
 
 chai.use(sinonChai);
 
-describe('BlackJack', () => {
+describe('BlackJackService', () => {
 
   let blackJackGame;
   beforeEach(() => {
-    blackJackGame = new BlackJack();
+    blackJackGame = new BlackJackService(
+      new GameService(),
+      new Deck(),
+      new Player('Player'),
+      new Player('Dealer'),
+    );
     sinon.stub(blackJackGame.game, 'start');
     sinon.stub(blackJackGame.game, 'renderHands');
     sinon.stub(blackJackGame.game, 'end');
@@ -71,36 +78,36 @@ describe('BlackJack', () => {
 
   describe('when getWinner', () => {
     it('should return Player when player total is closer to 21 than Dealer', () => {
-      blackJackGame.dealer.total = 17;
-      blackJackGame.player.total = 20;
+      blackJackGame.dealer.getHandTotal = () => 17;
+      blackJackGame.player.getHandTotal = () => 20;
 
       expect(blackJackGame.getWinner()).to.equal('Player');
     });
 
     it('should return Player when Dealer total is higher than 21', () => {
-      blackJackGame.dealer.total = 25;
-      blackJackGame.player.total = 16;
+      blackJackGame.dealer.getHandTotal = () => 25;
+      blackJackGame.player.getHandTotal = () => 16;
 
       expect(blackJackGame.getWinner()).to.equal('Player');
     });
 
     it('should return Dealer when dealer total is closer to 21 than Player', () => {
-      blackJackGame.dealer.total = 20;
-      blackJackGame.player.total = 8;
+      blackJackGame.dealer.getHandTotal = () => 20;
+      blackJackGame.player.getHandTotal = () => 8;
 
       expect(blackJackGame.getWinner()).to.equal('Dealer');
     });
 
     it('should return Dealer when Player total is higher than 21', () => {
-      blackJackGame.dealer.total = 15;
-      blackJackGame.player.total = 27;
+      blackJackGame.dealer.getHandTotal = () => 15;
+      blackJackGame.player.getHandTotal = () => 27;
 
       expect(blackJackGame.getWinner()).to.equal('Dealer');
     });
 
     it('should return Tie when dealear and player total are equal', () => {
-      blackJackGame.dealer.total = 17;
-      blackJackGame.player.total = 17;
+      blackJackGame.dealer.getHandTotal = () => 17;
+      blackJackGame.player.getHandTotal = () => 17;
 
       expect(blackJackGame.getWinner()).to.equal('Tie');
     });
