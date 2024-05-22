@@ -21,7 +21,7 @@ describe('BlackJackService', () => {
       new Player('Player'),
       new Player('Dealer'),
     );
-    sinon.stub(blackJackGame.game, 'setup');
+    sinon.stub(blackJackGame.game, 'bind');
     sinon.stub(blackJackGame.game, 'start');
     sinon.stub(blackJackGame.game, 'renderHands');
     sinon.stub(blackJackGame.game, 'end');
@@ -31,7 +31,7 @@ describe('BlackJackService', () => {
   describe('when bind', () => {
     it('should bind event handlers with dom elements', () => {
       blackJackGame.bind();
-      expect(blackJackGame.game.setup).to.have.been.calledWith(
+      expect(blackJackGame.game.bind).to.have.been.calledWith(
         blackJackGame.start,
         blackJackGame.hit,
         blackJackGame.stand

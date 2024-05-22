@@ -1,6 +1,6 @@
 class GameService {
 
-  setup = (startHandler, hitHandler, standHandler) => {
+  bind = (startHandler, hitHandler, standHandler) => {
     document.getElementById('play').addEventListener('click', startHandler);
     document.getElementById('hit').addEventListener('click', hitHandler);
     document.getElementById('stand').addEventListener('click', standHandler);
@@ -18,7 +18,7 @@ class GameService {
     let output = '';
     cards.forEach((card, index) => {
       const isHoldCard = playerType === "dealer" && index > 0;
-      output += `<div class="card ${card.suit} ${isHoldCard ? 'hold' : ''}"><span>${card.value}</span></div>`;
+      output += `<div class="card ${card.suit} ${isHoldCard ? 'hold' : ''}"><span>${card.value}</span><span class="suit">${card.suit}</span></div>`;
     });
     output += `<div class="total" id="${playerType}-total">${total}</div>`;
     return output;

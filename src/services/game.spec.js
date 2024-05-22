@@ -46,13 +46,13 @@ describe('GameService', () => {
     global.document = dom.window.document;
   });
 
-  describe('when setup', () => {
+  describe('when bind', () => {
     it('should bind event handlers to dom components', () => {
       const game = new GameService();
       const startMock = sinon.mock();
       const hitMock = sinon.mock();
       const standMock = sinon.mock();
-      game.setup(startMock, hitMock, standMock);
+      game.bind(startMock, hitMock, standMock);
 
       global.document.getElementById('play').click();
       expect(startMock).to.have.been.callCount(1);
@@ -81,9 +81,9 @@ describe('GameService', () => {
       expect(global.document.getElementById('blackjack').className).to.equal('game started');
 
       expect(global.document.getElementById('winner').innerText).to.equal('');
-      expect(global.document.getElementById('player-hand').innerHTML).to.equal('<div class="card Hearts "><span>2</span></div><div class="card Hearts "><span>3</span></div><div class="total" id="player-total">5</div>');
+      expect(global.document.getElementById('player-hand').innerHTML).to.equal('<div class="card Hearts "><span>2</span><span class="suit">Hearts</span></div><div class="card Hearts "><span>3</span><span class="suit">Hearts</span></div><div class="total" id="player-total">5</div>');
       expect(global.document.getElementById('player-total').innerHTML).to.equal('5');
-      expect(global.document.getElementById('dealer-hand').innerHTML).to.equal('<div class="card Hearts "><span>J</span></div><div class="card Hearts hold"><span>2</span></div><div class="total" id="dealer-total">12</div>');
+      expect(global.document.getElementById('dealer-hand').innerHTML).to.equal('<div class="card Hearts "><span>J</span><span class="suit">Hearts</span></div><div class="card Hearts hold"><span>2</span><span class="suit">Hearts</span></div><div class="total" id="dealer-total">12</div>');
       expect(global.document.getElementById('dealer-total').innerHTML).to.equal('12');
     });
   });
@@ -105,17 +105,17 @@ describe('GameService', () => {
       expect(global.document.getElementById('blackjack').className).to.equal('game started');
 
       expect(global.document.getElementById('winner').innerText).to.equal('');
-      expect(global.document.getElementById('player-hand').innerHTML).to.equal('<div class="card Hearts "><span>2</span></div><div class="card Hearts "><span>3</span></div><div class="total" id="player-total">5</div>');
+      expect(global.document.getElementById('player-hand').innerHTML).to.equal('<div class="card Hearts "><span>2</span><span class="suit">Hearts</span></div><div class="card Hearts "><span>3</span><span class="suit">Hearts</span></div><div class="total" id="player-total">5</div>');
       expect(global.document.getElementById('player-total').innerHTML).to.equal('5');
-      expect(global.document.getElementById('dealer-hand').innerHTML).to.equal('<div class="card Hearts "><span>J</span></div><div class="card Hearts hold"><span>2</span></div><div class="total" id="dealer-total">12</div>');
+      expect(global.document.getElementById('dealer-hand').innerHTML).to.equal('<div class="card Hearts "><span>J</span><span class="suit">Hearts</span></div><div class="card Hearts hold"><span>2</span><span class="suit">Hearts</span></div><div class="total" id="dealer-total">12</div>');
       expect(global.document.getElementById('dealer-total').innerHTML).to.equal('12');
 
       game.end(player, dealer, 'Dealer');
 
       expect(global.document.getElementById('winner').innerText).to.equal('Winner: Dealer');
-      expect(global.document.getElementById('player-hand').innerHTML).to.equal('<div class="card Hearts "><span>2</span></div><div class="card Hearts "><span>3</span></div><div class="total" id="player-total">5</div>');
+      expect(global.document.getElementById('player-hand').innerHTML).to.equal('<div class="card Hearts "><span>2</span><span class="suit">Hearts</span></div><div class="card Hearts "><span>3</span><span class="suit">Hearts</span></div><div class="total" id="player-total">5</div>');
       expect(global.document.getElementById('player-total').innerHTML).to.equal('5');
-      expect(global.document.getElementById('dealer-hand').innerHTML).to.equal('<div class="card Hearts "><span>J</span></div><div class="card Hearts hold"><span>2</span></div><div class="total" id="dealer-total">12</div>');
+      expect(global.document.getElementById('dealer-hand').innerHTML).to.equal('<div class="card Hearts "><span>J</span><span class="suit">Hearts</span></div><div class="card Hearts hold"><span>2</span><span class="suit">Hearts</span></div><div class="total" id="dealer-total">12</div>');
       expect(global.document.getElementById('dealer-total').innerHTML).to.equal('12');
     });
   });

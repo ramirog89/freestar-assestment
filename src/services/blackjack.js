@@ -8,7 +8,7 @@ class BlackJackService {
   }
   
   bind = () => {
-    this.game.setup(this.start, this.hit, this.stand);
+    this.game.bind(this.start, this.hit, this.stand);
   }
 
   start = () => {
