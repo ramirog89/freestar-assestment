@@ -18,7 +18,7 @@ Another aspect not covered here is the use of Typescript which I avoid to use ju
 - **Webpack**: `Javascript Bundler`
 
 ## Commands
-* **installation:** `npm run install` *install required dependencies*
+* **installation:** `npm install` *install required dependencies*
 * **start:** `npm run start` *start application in port 8080 with http-server*
 * **test:** `npm run test` *unit tests*
 * **build:** `npm run build` *generates build package*
