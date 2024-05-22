@@ -4,16 +4,22 @@
   box-sizing: border-box;
 }
 
-body {
+html, body {
   background-color: rgb(32, 120, 49);
+  width: 100vw;
+  height: 100vh;
 }
 
 .title {
   text-align: center;
-  margin: 0.67em 0;
+}
+
+.title h1 {
+  font-size: 100%;
 }
 
 .game {
+  height: calc(100% - 38px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,12 +27,14 @@ body {
 }
 
 .game .board {
+  width: 100%;
+  height: calc(100% - 15%);
   position: relative;
 }
 
 .game .box {
   margin: 20px 0;
-  height: 180px;
+  height: calc(100% - 60%);
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -37,7 +45,7 @@ body {
 .game .card {
   border-radius: 4%;
   border: 1px solid #000;
-  width: 120px;
+  width: calc(100% - 90%);
   height: 100%;
   padding: 4px;
   margin: 0 2px;
@@ -53,6 +61,10 @@ body {
 .game .card.Clubs,
 .game .card.Spades {
   color: #000;
+}
+
+.game .card .suit {
+  display: block;
 }
 
 .game.started .card.hold {
@@ -94,8 +106,8 @@ body {
 .game .board .winner {
   color: #fff;
   position: absolute;
-  top: 48%;
-  right: -20%;
+  top: calc(100% - 58%);
+  right: 24%;
 }
 
 .game .controls {
@@ -121,12 +133,24 @@ body {
   background-color: rgb(34, 189, 34);
 }
 
+.game .controls button#hit:hover {
+  background-color: rgb(18, 157, 18);
+}
+
 .game .controls button#stand {
   background-color: rgb(175, 35, 35);
 }
 
+.game .controls button#stand:hover {
+  background-color: rgb(142, 29, 29);
+}
+
 .game .controls button#play {
   background-color: rgb(38, 38, 219);
+}
+
+.game .controls button#play:hover {
+  background-color: rgb(32, 32, 187);
 }
 
 .game .board,
