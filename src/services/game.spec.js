@@ -1,8 +1,14 @@
-const { expect } = require('chai');
+const chai = require('chai');
+const sinonChai = require('sinon-chai');
+const sinon = require('sinon');
+
+const { expect } = chai;
 const { JSDOM } = require('jsdom');
 const { GameService } = require('./game');
 const { Player } = require('../entities/player');
 const { Card } = require('../entities/card');
+
+chai.use(sinonChai);
 
 describe('GameService', () => {
   let dom;
@@ -38,6 +44,19 @@ describe('GameService', () => {
       </html>
     `, { url: 'http://localhost:8080' });
     global.document = dom.window.document;
+  });
+
+  describe('when setup', () => {
+    it('should bind event handlers to dom components', () => {
+      const game = new GameService();
+      const startMock = sinon.mock();
+      const hitMock = sinon.mock();
+      const standMock = sinon.mock();
+      game.setup(startMock, hitMock, standMock);
+
+      global.document.getElementById('play').click();
+      expect(startMock).to.have.been.callCount(1);
+    });
   });
 
   describe('when start', () => {

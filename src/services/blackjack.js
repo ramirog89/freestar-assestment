@@ -22,6 +22,7 @@ class BlackJackService {
   hit = () => {
     this.player.hand.push(this.deck.getCard());
     this.game.renderHands(this.player, this.dealer);
+    /* istanbul ignore else */
     if (this.player.getHandTotal() > 21) {
       this.game.end(this.player, this.dealer, this.getWinner());
     }

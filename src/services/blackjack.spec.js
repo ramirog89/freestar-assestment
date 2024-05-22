@@ -21,10 +21,22 @@ describe('BlackJackService', () => {
       new Player('Player'),
       new Player('Dealer'),
     );
+    sinon.stub(blackJackGame.game, 'setup');
     sinon.stub(blackJackGame.game, 'start');
     sinon.stub(blackJackGame.game, 'renderHands');
     sinon.stub(blackJackGame.game, 'end');
     blackJackGame.start();
+  });
+
+  describe('when bind', () => {
+    it('should bind event handlers with dom elements', () => {
+      blackJackGame.bind();
+      expect(blackJackGame.game.setup).to.have.been.calledWith(
+        blackJackGame.start,
+        blackJackGame.hit,
+        blackJackGame.stand
+      );
+    });
   });
 
   describe('when start', () => {
@@ -70,8 +82,12 @@ describe('BlackJackService', () => {
   
   describe('when stand', () => {
     it('should give one more card to the dealer if below 17 and end game', () => {
+      blackJackGame.dealer.hand = [
+        new Card("Hearts", "9", 9),
+        new Card("Hearts", "2", 2),
+      ];
       blackJackGame.stand();
-      // expect(blackJackGame.dealer.hand.length).to.equal(3);
+      expect(blackJackGame.dealer.hand.length).to.greaterThan(2);
       expect(blackJackGame.game.end).to.have.been.callCount(1);
     });
   });
@@ -99,7 +115,6 @@ describe('BlackJackService', () => {
     });
 
     it('should return Dealer when Player total is higher than 21', () => {
-      blackJackGame.dealer.getHandTotal = () => 15;
       blackJackGame.player.getHandTotal = () => 27;
 
       expect(blackJackGame.getWinner()).to.equal('Dealer');
