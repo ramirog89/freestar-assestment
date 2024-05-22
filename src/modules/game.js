@@ -1,25 +1,39 @@
 class Game {
 
+  setup = (startHandler, hitHandler, standHandler) => {
+    document.getElementById('play').addEventListener('click', startHandler);
+    document.getElementById('hit').addEventListener('click', hitHandler);
+    document.getElementById('stand').addEventListener('click', standHandler);
+  }
+
   start = (player, dealer) => {
+    document.getElementById('blackjack').classList.add('started');
     document.getElementById('hit').disabled = false;
     document.getElementById('stand').disabled = false;
-    document.getElementById('winnerAnnouncement').innerText = '';
+    document.getElementById('winner').innerText = '';
     this.renderHands(player, dealer);
   }
 
+  renderCards = (cards, playerType, total) => {
+    let output = '';
+    cards.forEach((card, index) => {
+      const isHoldCard = playerType === "dealer" && index > 0;
+      output += `<div class="card ${card.suit} ${isHoldCard ? 'hold' : ''}"><span>${card.value}</span></div>`;
+    });
+    output += `<div class="total" id="${playerType}-total">${total}</div>`;
+    return output;
+  }
+
   renderHands = (player, dealer) => {
-    document.getElementById('playerHand').innerText = player.handToString();
-    document.getElementById('playerTotal').innerText = `Total: ${player.getHandTotal()}`;
-    document.getElementById('dealerHand').innerText = `Hidden, ${dealer.handToString()}`;
-    document.getElementById('dealerTotal').innerText = `Total: ??`;
+    document.getElementById('player-hand').innerHTML = this.renderCards(player.hand, 'player', player.getHandTotal());
+    document.getElementById('dealer-hand').innerHTML = this.renderCards(dealer.hand, 'dealer', dealer.getHandTotal());
   }
 
   end = (player, dealer, winner) => {
-    document.getElementById('hit').disabled = true;
-    document.getElementById('stand').disabled = true;
-    document.getElementById('dealerHand').innerText = dealer.handToString();
-    document.getElementById('dealerTotal').innerText = `Total: ${dealer.getHandTotal()}`;
-    document.getElementById('winnerAnnouncement').innerText = `Winner: ${winner}`;
+    this.renderHands(player, dealer);
+    document.getElementById('blackjack').classList.remove('started');
+    document.getElementById('blackjack').classList.add('finished');
+    document.getElementById('winner').innerText = `Winner: ${winner}`;
   }
 
 }
