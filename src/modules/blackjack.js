@@ -8,6 +8,10 @@ class BlackJack {
   player = new Player('Player');
   dealer = new Player('Dealer');
 
+  constructor() {
+    this.game.setup(this.start, this.hit, this.stand);
+  }
+
   start = () => {
     this.deck.create();
     this.deck.shuffle();
@@ -32,13 +36,13 @@ class BlackJack {
   }
 
   getWinner = () => {
-    if (this.player.total > 21) {
+    if (this.player.getHandTotal() > 21) {
       return this.dealer.name;
-    } else if (this.dealer.total > 21) {
+    } else if (this.dealer.getHandTotal() > 21) {
       return this.player.name;
-    } else if (this.player.total > this.dealer.total) {
+    } else if (this.player.getHandTotal() > this.dealer.getHandTotal()) {
       return this.player.name;
-    } else if (this.dealer.total > this.player.total) {
+    } else if (this.dealer.getHandTotal() > this.player.getHandTotal()) {
       return this.dealer.name;
     }
 
