@@ -17,4 +17,6 @@ Actally the solution is using vanilla javascript
 
 ## Scaffolding
 * src (folder) `source code`
-* * modules (folder) `main app modules`
+* * assets (folder) `app assets`
+* * entities (folder) `app entities`
+* * services (folder) `app services that abstract business logic and handle side effects`
