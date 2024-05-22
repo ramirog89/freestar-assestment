@@ -8,6 +8,7 @@ class GameService {
 
   start = (player, dealer) => {
     document.getElementById('blackjack').classList.add('started');
+    document.getElementById('blackjack').classList.remove('finished');
     document.getElementById('hit').disabled = false;
     document.getElementById('stand').disabled = false;
     document.getElementById('winner').innerText = '';
