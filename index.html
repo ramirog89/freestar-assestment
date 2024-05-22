@@ -2,20 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Blackjack Game</title>
+    <title>Freestar Assestment</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h2>Blackjack Game</h2>
-    <button id="startGame">Start Game</button>
-    <h3>Player's Hand</h3>
-    <div id="playerHand"></div>
-    <div id="playerTotal"></div>
-    <button id="hit" disabled>Hit</button>
-    <button id="stand" disabled>Stand</button>
-    <h3>Dealer's Hand</h3>
-    <div id="dealerHand"></div>
-    <div id="dealerTotal"></div>
-    <div id="winnerAnnouncement"></div>
+    <div class="title">
+        <h1>BlackJack Game</h1>
+    </div>
+    <div class="game" id="blackjack">
+        <div class="board">
+            <div class="box dealer" id="dealer-hand"></div>
+            <div class="winner" id="winner"></div>
+            <div class="box player" id="player-hand"></div>
+        </div>
+        <div class="controls">
+            <button id="hit" disabled>Hit</button>
+            <button id="stand" disabled>Stand</button>
+            <button id="play">Start</button>
+        </div>
+    </div>
 
     <script src="./bundle.js"></script>
 </body>
