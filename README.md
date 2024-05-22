@@ -1,7 +1,9 @@
 ## Freestar Home Assestment
 
-The solution provides the necessry code for the Blackjack Card Game Challenge.
-Actally the solution is using vanilla javascript
+The solution provides the necessary code for the Blackjack Card Game Challenge.
+Actually there are no external assets to load images nor svgs to render Cards.
+Also, this solution could be solved in many different ways having different considerations, but this is a minimalistic approach following the Keep it simple principle for the sake of simplicity - other approaches can be discussed, like having render Components and View Pages -
+
 
 - **Mocha**: `Testing Framework`
 - **Chai**: `Test Assert Tool`
